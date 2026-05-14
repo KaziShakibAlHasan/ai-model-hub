@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-const ModelCard = ({model}) => {
-    const[ ifSubscribed, setSubscribed] = useState(false);
+
+const ModelCard = ({model, carts, setCarts }) => {
+    const[ ifSubscribed, setSubscribed] = useState(false)
     const handleSubsScription = () => {
         setSubscribed(true)
+        setCarts([...carts, model])
+        toast.success('Item added to cart')
     }
     return (
         <div className="shadow-2xl rounded-lg border overflow-hidden border-zinc-300">
